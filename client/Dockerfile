@@ -1,5 +1,5 @@
 # Use the official Angular CLI image as the base image
-FROM node:14 as builder
+FROM node:latest as builder
 
 # Set the working directory inside the container
 WORKDIR /app
