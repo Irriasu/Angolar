@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./API  # Path to the Dockerfile for the Node.js API
+    ports:
+      - "3000:3000"  # Port mapping for the API service
+    volumes:
+      - api-data:/app/data  # Mount a volume for the API service
+
+  client:
+    build: ./Client  # Path to the Dockerfile for the Angular client
+    ports:
+      - "80:80"  # Port mapping for the Angular client
+    volumes:
+      - client-data:/usr/share/nginx/html  # Mount a volume for the Angular client
+
+volumes:
+  api-data:  # Define a named volume for API data
+  client-data:  # Define a named volume for client data
