@@ -1,26 +1,11 @@
-# Use the official Angular CLI image as the base image
-FROM node:latest as builder
+FROM node:alpine
 
-# Set the working directory inside the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY . /usr/src/app
 
-# Install dependencies
+RUN npm install -g @angular/cli
+
 RUN npm install
 
-# Copy the rest of the application code to the working directory
-COPY . .
-
-# Build the Angular app for production
-RUN npm run build
-
-# Use NGINX as the final base image to serve the Angular app
-FROM nginx:alpine
-
-# Copy the built Angular app from the builder stage to the NGINX HTML directory
-COPY --from=builder /app/dist/MyApp /usr/share/nginx/html
-
-# Expose port 80 to the outside world
-EXPOSE 80
+CMD ["ng", "serve", "--host", "0.0.0.0"]
