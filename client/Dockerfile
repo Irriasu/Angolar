@@ -1,28 +1,24 @@
-# Use the official Angular CLI image as the base image
+# Step 1: We build the angular app using the production config
 FROM node:latest as build
-
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
-
-# Copy package.json and package-lock.json to the working directory
+# Copy the package.json and package-lock.json files
 COPY package*.json ./
-
-
-
-# Copy the rest of the application code to the working directory
-COPY . /app/
-
-# Install dependencies
-
-RUN npm install
-
-# Build the Angular app for production
-RUN npm run build
-
+# Run a clean install of the dependencies
+RUN npm ci
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
+# Copy all files
+COPY . .
+# Build the application
+RUN npm run build --configuration=production
+# Step 2: We use the nginx image to serve the application
 FROM nginx:latest
-
-COPY --from=build /app/dist/client /usr/share/nginx/html
-
-
-# Expose port 80 to the outside world
+# Copy the build output to replace the default nginx contents.
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+# Copy the build output to replace the default nginx contents.
+COPY --from=build /app/dist/client/browser /usr/share/nginx/html
+# Expose port 80
 EXPOSE 80
+# Build: docker build -t demo-nodejs
+# Run: docker run -d-p 8080:80 demo-nodejs
