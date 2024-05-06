@@ -1,5 +1,5 @@
 # Use the official Angular CLI image as the base image
-FROM node:latest as builder
+FROM node:alpine as builder
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -13,6 +13,7 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+RUN npm install -g @angular/cli
 # Build the Angular app for production
 RUN npm run build
 
