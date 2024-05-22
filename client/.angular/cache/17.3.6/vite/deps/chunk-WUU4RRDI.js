@@ -742,8 +742,8 @@ var BaseIcon = class _BaseIcon {
 })();
 
 export {
-  BaseIcon,
   DomHandler,
-  ConnectedOverlayScrollHandler
+  ConnectedOverlayScrollHandler,
+  BaseIcon
 };
-//# sourceMappingURL=chunk-55Q6A74D.js.map
+//# sourceMappingURL=chunk-WUU4RRDI.js.map

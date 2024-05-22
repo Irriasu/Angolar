@@ -1,22 +1,6 @@
 import {
   TimesIcon
-} from "./chunk-PWFERSMT.js";
-import {
-  Ripple,
-  RippleModule
-} from "./chunk-TDQANTSR.js";
-import {
-  BaseIcon
-} from "./chunk-55Q6A74D.js";
-import {
-  MessageService,
-  ObjectUtils,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId,
-  zindexutils
-} from "./chunk-TKC3U6KT.js";
+} from "./chunk-PLOZSUGX.js";
 import {
   animate,
   animateChild,
@@ -26,6 +10,22 @@ import {
   transition,
   trigger
 } from "./chunk-7CEXKETB.js";
+import {
+  Ripple,
+  RippleModule
+} from "./chunk-TFLQIZQG.js";
+import {
+  BaseIcon
+} from "./chunk-WUU4RRDI.js";
+import {
+  MessageService,
+  ObjectUtils,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId,
+  zindexutils
+} from "./chunk-TKC3U6KT.js";
 import {
   CommonModule,
   DOCUMENT,
